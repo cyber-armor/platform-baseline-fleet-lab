@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: wazuh-apps
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            env: prod
+            region: eu
+  template:
+    metadata:
+      name: 'wazuh-{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/yourorg/apps.git
+        targetRevision: main
+        path: wazuh/deploy/helm
+        helm:
+          releaseName: wazuh
+      destination:
+        server: '{{server}}'
+        namespace: wazuh
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
