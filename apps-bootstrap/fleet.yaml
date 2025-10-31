@@ -1,0 +1,2 @@
+dependsOn:
+  - name: argocd   # name of the bundle folder that installs Argo CD
