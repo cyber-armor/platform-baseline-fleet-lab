@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: opencti-apps
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            env: prod
+            region: eu
+  template:
+    metadata:
+      name: 'opencti-{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/yourorg/apps.git
+        targetRevision: main
+        path: opencti/deploy/helm
+        helm:
+          releaseName: opencti
+      destination:
+        server: '{{server}}'
+        namespace: opencti
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
