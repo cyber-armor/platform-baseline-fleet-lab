@@ -1,0 +1,19 @@
+server:
+  extraArgs:
+    - --insecure                    # if you terminate TLS at Traefik
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - argocd.your-domain.tld
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - secretName: argocd-tls
+        hosts:
+          - argocd.your-domain.tld
+configs:
+  params:
+    server.insecure: "true"
