@@ -1,0 +1,12 @@
+deployment:
+  replicas: 1
+providers:
+  kubernetesCRD:
+    enabled: true
+ports:
+  web:
+    expose:
+      default: true
+  websecure:
+    expose:
+      default: true
