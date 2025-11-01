@@ -10,3 +10,53 @@ ports:
   websecure:
     expose:
       default: true
+
+      # Salt Mmster TCP/4505
+  tcp4505:
+    port: 4505
+    expose:
+      default: true
+    protocol: TCP
+
+
+  # Salt Master TCP/4506
+  tcp4506:
+    port: 4506
+    expose:
+      default: true
+    protocol: TCP
+
+  # Salt Master API TCP/4506
+  #tcp4506:
+  #  port: 8000
+  #  expose:
+  #    default: true
+  #  protocol: TCP
+
+  # Wazuh agent (logs) TCP/1514
+  tcp1514:
+    port: 1514
+    expose:
+      default: true
+    protocol: TCP
+
+  # Wazuh authd TCP/1515
+  tcp1515:
+    port: 1515
+    expose:
+      default: true
+    protocol: TCP
+
+  # Syslog TCP/55514
+  tcp55514:
+    port: 55514
+    expose:
+      default: true
+    protocol: TCP
+
+  # Syslog UDP/55514
+  udp55514:
+    port: 55514
+    expose:
+      default: true
+    protocol: UDP
