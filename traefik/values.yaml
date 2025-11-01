@@ -1,4 +1,4 @@
-hostNetwork: true
+# hostNetwork: true
 # Inside your Pod/Deployment spec.containers.securityContext
 securityContext:
   capabilities:
