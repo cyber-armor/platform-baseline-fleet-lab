@@ -1,9 +1,13 @@
-# namespace: cert-manager
-
+namespace: cert-manager        # ← deploy here
 helm:
   repo: https://charts.jetstack.io
   chart: cert-manager
-  version: v1.19.1
+  version: v1.15.x
   releaseName: cert-manager
   values:
     installCRDs: true
+# Optional: add labels/annotations to the namespace Fleet creates
+namespaceLabels:
+  app.kubernetes.io/managed-by: fleet
+namespaceAnnotations:
+  owner: platform
