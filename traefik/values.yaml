@@ -1,9 +1,26 @@
-# hostNetwork: true
-# Inside your Pod/Deployment spec.containers.securityContext
+hostNetwork: true
+
+hostPorts:
+- max: 65535
+  min: 0
+
+deployment:
+  kind: Deployment
+  replicas: 1
+  dnsPolicy: ClusterFirstWithHostNet
+  
+# allow binding to 80/443 on hostNetwork
 securityContext:
   capabilities:
+    drop:
+      - ALL
     add:
       - NET_BIND_SERVICE
+#  allowPrivilegeEscalation: false
+  runAsGroup: 0
+  runAsNonRoot: false
+  runAsUser: 0
+  
 additionalArguments:
   - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
 # deployment:
