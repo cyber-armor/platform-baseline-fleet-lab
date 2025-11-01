@@ -1,4 +1,4 @@
-# namespace: kube-system
+namespace: cert-manager
 
 helm:
   repo: https://charts.jetstack.io
