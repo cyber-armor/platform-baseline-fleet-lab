@@ -1,5 +1,8 @@
-deployment:
-  replicas: 1
+hostNetwork: true
+additionalArguments:
+  - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
+# deployment:
+#   replicas: 1
 providers:
   kubernetesCRD:
     enabled: true
