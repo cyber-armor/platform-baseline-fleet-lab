@@ -20,6 +20,10 @@ securityContext:
   runAsGroup: 0
   runAsNonRoot: false
   runAsUser: 0
+
+# No Service; traffic goes straight to the node IP:80/443/… via hostNetwork
+service:
+  enabled: false
   
 additionalArguments:
   - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
