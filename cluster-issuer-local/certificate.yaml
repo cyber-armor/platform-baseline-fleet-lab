@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: selfsigned-ca
+  namespace: cert-manager # 💡 Must exist before this resource is applied
+spec:
+  isCA: true
+  commonName: selfsigned-root-ca
+  secretName: selfsigned-root-secret # 👈 The key secret
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: selfsigned-bootstrap-issuer # 👈 References the bootstrap issuer (1)
+    kind: ClusterIssuer
+    group: cert-manager.io
