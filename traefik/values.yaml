@@ -1,4 +1,9 @@
 hostNetwork: true
+# Inside your Pod/Deployment spec.containers.securityContext
+securityContext:
+  capabilities:
+    add:
+      - NET_BIND_SERVICE
 additionalArguments:
   - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
 # deployment:
