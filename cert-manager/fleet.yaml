@@ -1,8 +1,9 @@
+namespace: kube-system
+
 helm:
   repo: https://charts.jetstack.io
   chart: cert-manager
   version: v1.19.1
   releaseName: cert-manager
-  namespace: kube-system
   values:
     installCRDs: true
