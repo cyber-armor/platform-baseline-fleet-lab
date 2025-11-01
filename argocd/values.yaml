@@ -7,13 +7,13 @@ server:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - argocd.your-domain.tld
+      - argocd.rancher
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
     tls:
       - secretName: argocd-tls
         hosts:
-          - argocd.your-domain.tld
+          - argocd.rancher
 configs:
   params:
     server.insecure: "true"
