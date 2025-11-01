@@ -3,6 +3,6 @@ helm:
   chart: traefik
   version: 37.2.0                # pick your tested version
   releaseName: traefik
-  namespace: kube-system
+  namespace: traefik-system
   valuesFiles:
     - values.yaml
