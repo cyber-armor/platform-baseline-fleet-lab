@@ -1,4 +1,4 @@
-namespace: argocd
+# namespace: argocd
 
 helm:
   repo: https://argoproj.github.io/argo-helm
