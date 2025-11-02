@@ -3,7 +3,7 @@ kind: Kustomization
 
 namespace: argocd
 resources:
-  - ns.yaml
+  # - ns.yaml
   # Pull the latest stable Argo CD install manifest maintained by the project
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
