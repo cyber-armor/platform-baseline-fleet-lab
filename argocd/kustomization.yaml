@@ -7,25 +7,41 @@ resources:
 - base/argo-cd-issuer.yaml
 - base/argo-cd-certificate.yaml
 - base/argo-cd-ui-ingress.yaml
-- base/rollouts-extension.yaml
-- base/sync-project.yaml
+# - base/rollouts-extension.yaml
+# - base/sync-project.yaml
 # - https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/ha/install.yaml
 
 # components:
 # - https://github.com/argoproj-labs/argocd-extensions/manifests
 
+# patches:
+# - path: overlays/production/argo-cd-cm.yaml
+# - path: overlays/production/argocd-cmd-params-cm.yaml
+# - path: overlays/production/argocd-notifications-cm.yaml
+# - path: overlays/production/argocd-notifications-controller-deploy.yaml
+# - path: overlays/production/argocd-rbac-cm.yaml
+# - path: overlays/production/argocd-server-service.yaml
+# - path: https://raw.githubusercontent.com/argoproj/argo-cd/master/notifications_catalog/install.yaml
+# - path: overlays/production/patch-priority-class.yaml
+#   target:
+#     kind: Deployment
+# - path: overlays/production/patch-priority-class.yaml
+#   target:
+#     kind: StatefulSet
+
+## proxmox lab
 patches:
-- path: overlays/production/argo-cd-cm.yaml
-- path: overlays/production/argocd-cmd-params-cm.yaml
-- path: overlays/production/argocd-notifications-cm.yaml
-- path: overlays/production/argocd-notifications-controller-deploy.yaml
-- path: overlays/production/argocd-rbac-cm.yaml
-- path: overlays/production/argocd-server-service.yaml
+- path: overlays/proxmox/argo-cd-cm.yaml
+- path: overlays/proxmox/argocd-cmd-params-cm.yaml
+- path: overlays/proxmox/argocd-notifications-cm.yaml
+- path: overlays/proxmox/argocd-notifications-controller-deploy.yaml
+- path: overlays/proxmox/argocd-rbac-cm.yaml
+- path: overlays/proxmox/argocd-server-service.yaml
 - path: https://raw.githubusercontent.com/argoproj/argo-cd/master/notifications_catalog/install.yaml
-- path: overlays/production/patch-priority-class.yaml
+- path: overlays/proxmox/patch-priority-class.yaml
   target:
     kind: Deployment
-- path: overlays/production/patch-priority-class.yaml
+- path: overlays/proxmox/patch-priority-class.yaml
   target:
     kind: StatefulSet
 
