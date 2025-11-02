@@ -34,9 +34,9 @@ resources:
 # #     kind: StatefulSet
 
 # ## proxmox lab
-patches:
+# patches:
 # - path: overlays/proxmox/argo-cd-cm.yaml
-- path: overlays/proxmox/argocd-cmd-params-cm.yaml
+# - path: overlays/proxmox/argocd-cmd-params-cm.yaml
 # - path: overlays/proxmox/argocd-server-service.yaml
 # - path: overlays/proxmox/patch-priority-class.yaml
 #   target:
