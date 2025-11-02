@@ -34,11 +34,7 @@ resources:
 patches:
 - path: overlays/proxmox/argo-cd-cm.yaml
 - path: overlays/proxmox/argocd-cmd-params-cm.yaml
-# - path: overlays/proxmox/argocd-notifications-cm.yaml
-# - path: overlays/proxmox/argocd-notifications-controller-deploy.yaml
-# - path: overlays/proxmox/argocd-rbac-cm.yaml
 - path: overlays/proxmox/argocd-server-service.yaml
-# - path: https://raw.githubusercontent.com/argoproj/argo-cd/master/notifications_catalog/install.yaml
 - path: overlays/proxmox/patch-priority-class.yaml
   target:
     kind: Deployment
