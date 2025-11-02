@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+data:
+  # Equivalent to adding --insecure to the argocd-server command
+  server.insecure: "true"

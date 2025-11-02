@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+resources:
+  # - ns.yaml
+  # Pull the latest stable Argo CD install manifest maintained by the project
+  - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  - ingressroute.yaml
+
+patches:
+  # Force argocd-server Service to ClusterIP (Traefik fronts it)
+  - path: patch-argocd-server-svc.yaml
+    target:
+      kind: Service
+      name: argocd-server
+  # Run API server with TLS off; ingress terminates TLS
+  - path: patch-argocd-cmd-params-cm.yaml
+    target:
+      kind: ConfigMap
+      name: argocd-cmd-params-cm
+  # Seed the admin password (bcrypt) + mtime
+  - path: patch-argocd-secret.yaml
+    target:
+      kind: Secret
+      name: argocd-secret
