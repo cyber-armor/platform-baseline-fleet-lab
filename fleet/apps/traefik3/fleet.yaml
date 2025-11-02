@@ -1,0 +1,9 @@
+# namespace: traefik-system
+
+helm:
+  repo: https://helm.traefik.io/traefik
+  chart: traefik
+  version: 37.2.0
+  releaseName: traefik
+  valuesFiles:
+    - values.yaml

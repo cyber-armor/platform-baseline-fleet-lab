@@ -1,0 +1,95 @@
+hostNetwork: true
+
+hostPorts:
+- max: 65535
+  min: 0
+
+deployment:
+  kind: Deployment
+  replicas: 1
+  dnsPolicy: ClusterFirstWithHostNet
+  
+# allow binding to 80/443 on hostNetwork
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+    add:
+      - NET_BIND_SERVICE
+#  allowPrivilegeEscalation: false
+  runAsGroup: 0
+  runAsNonRoot: false
+  runAsUser: 0
+
+# No Service; traffic goes straight to the node IP:80/443/… via hostNetwork
+service:
+  enabled: false
+  ## -- Single service is using `MixedProtocolLBService` feature gate.
+  ## -- When set to false, it will create two Service, one for TCP and one for UDP.
+  single: true
+  type: ClusterIP
+  
+additionalArguments:
+  - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
+# deployment:
+#   replicas: 1
+providers:
+  kubernetesCRD:
+    enabled: true
+ports:
+  web:
+    expose:
+      default: true
+  websecure:
+    expose:
+      default: true
+
+      # Salt Mmster TCP/4505
+  tcp4505:
+    port: 4505
+    expose:
+      default: true
+    protocol: TCP
+
+
+  # Salt Master TCP/4506
+  tcp4506:
+    port: 4506
+    expose:
+      default: true
+    protocol: TCP
+
+  # Salt Master API TCP/4506
+  #tcp4506:
+  #  port: 8000
+  #  expose:
+  #    default: true
+  #  protocol: TCP
+
+  # Wazuh agent (logs) TCP/1514
+  tcp1514:
+    port: 1514
+    expose:
+      default: true
+    protocol: TCP
+
+  # Wazuh authd TCP/1515
+  tcp1515:
+    port: 1515
+    expose:
+      default: true
+    protocol: TCP
+
+  # Syslog TCP/55514
+  tcp55514:
+    port: 55514
+    expose:
+      default: true
+    protocol: TCP
+
+  # Syslog UDP/55514
+  udp55514:
+    port: 55514
+    expose:
+      default: true
+    protocol: UDP
