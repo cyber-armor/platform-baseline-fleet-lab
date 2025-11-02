@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: xdr
+  namespace: argocd
+spec:
+  description: "Project for critical XDR apps"
+  # Limit sources to your private repo (add more as needed)
+  sourceRepos:
+    - git@github.com:YOUR-ORG/YOUR-PRIVATE-XDR-REPO.git
+  # Allow deploying to any namespace on this cluster (tighten if desired)
+  destinations:
+    - namespace: "*"
+      server: https://kubernetes.default.svc
+  # Permit cluster-scoped resources (tighten if desired)
+  clusterResourceWhitelist:
+    - group: "*"
+      kind: "*"
+  # Optional: default namespace(s) allowed
+  # namespaceResourceWhitelist:
+  #   - group: "*"
+  #     kind: "*"

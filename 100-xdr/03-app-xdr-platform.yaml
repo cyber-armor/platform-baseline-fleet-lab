@@ -1,0 +1,41 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: xdr-platform
+  namespace: argocd
+spec:
+  project: xdr
+  source:
+    repoURL: git@github.com:YOUR-ORG/YOUR-PRIVATE-XDR-REPO.git
+    targetRevision: main          # change if you use another branch or tag
+    path: deploy/k8s              # change to the path with your manifests/helm/kustomize
+
+    # One of these blocks (uncomment as appropriate):
+
+    # If you use Kustomize in your repo:
+    # kustomize:
+    #   # edits/vars/patches if needed
+    #   images: []
+
+    # If you deploy with Helm charts from your repo:
+    # helm:
+    #   releaseName: xdr
+    #   valueFiles:
+    #     - values/values-lab.yaml
+    #   valuesObject:
+    #     ingress:
+    #       enabled: true
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: xdr
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - Validate=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true

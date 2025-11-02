@@ -1,0 +1,14 @@
+defaultNamespace: argocd
+
+# # Target the cluster(s) that should receive this Argo CD config.
+# # Option A: by cluster name
+# targets:
+#   - name: lab
+#     clusterName: rke2-lab
+
+# Option B (instead of the above): by label
+targets:
+  - name: cloudProvider
+    clusterSelector:
+      matchLabels:
+        env: proxmox-lab

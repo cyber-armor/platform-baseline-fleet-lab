@@ -1,5 +1,0 @@
-# platform-baseline/argocd-kustomize/fleet.yaml
-defaultNamespace: argocd
-kustomize:
-  dir: .
-  # dir: ""
