@@ -1,9 +1,0 @@
-# namespace: argocd
-
-helm:
-  repo: https://argoproj.github.io/argo-helm
-  chart: argo-cd
-  version: 6.x.x                    # 6.x for Argo CD v2.11+
-  releaseName: argocd
-  valuesFiles:
-    - values.yaml
