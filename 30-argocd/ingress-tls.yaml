@@ -11,6 +11,22 @@ spec:
   commonName: argocd.lab
   dnsNames:
     - argocd.lab
+
+  subject:
+    organizations:
+      - Cyber Armor SRL
+    organizationalUnits:
+      - Platform Security
+    countries:
+      - RO
+    provinces:
+      - Timis
+    localities:
+      - Timisoara
+    postalCodes:
+      - "300262"
+    streetAddresses:
+      - "Richard Waldemar Oschanitzky 3"
   privateKey:
     algorithm: RSA
     size: 2048
