@@ -1,0 +1,24 @@
+# Keep Traefik image tag empty so it follows the chart's appVersion (latest stable).
+image:
+  tag: null
+
+# Make Traefik the default IngressClass (set to false if you run multiple ingress controllers).
+ingressClass:
+  enabled: true
+  isDefaultClass: true
+
+# Use a LoadBalancer (fits your Hetzner CCM setup). Switch to ClusterIP + externalIPs if you prefer.
+service:
+  enabled: true
+  # type: LoadBalancer
+  type: ClusterIP
+
+# Enable both providers. PublishedService helps Traefik discover its external address.
+providers:
+  kubernetesCRD:
+    enabled: true
+  kubernetesIngress:
+    enabled: true
+    publishedService:
+      enabled: true   # important for external IP/hostname propagation
+      # pathOverride: ""  # (optional) <ns>/<svc> if you need to point elsewhere
