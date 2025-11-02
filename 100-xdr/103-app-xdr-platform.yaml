@@ -6,7 +6,7 @@ metadata:
 spec:
   project: xdr
   source:
-    repoURL: git@github.com:YOUR-ORG/YOUR-PRIVATE-XDR-REPO.git
+    repoURL: git@github.com:cyber-armor/xdr.git
     targetRevision: main          # change if you use another branch or tag
     path: deploy/k8s              # change to the path with your manifests/helm/kustomize
 
@@ -33,7 +33,8 @@ spec:
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
+      # selfHeal: true
+      selfHeal: false
     syncOptions:
       - CreateNamespace=true
       - Validate=true

@@ -2,5 +2,5 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - 101-appproject-xdr.yaml
-  - 102-repo-secret-xdr.yaml
-  - 103-app-xdr-platform.yaml
+  # - 102-repo-secret-xdr.yaml
+  # - 103-app-xdr-platform.yaml
