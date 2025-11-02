@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: traefik
 resources:
   - dashboard-tls.yaml
-  - dashboard-ingress-route.yaml
+  - dashboard-ingressroute.yaml
