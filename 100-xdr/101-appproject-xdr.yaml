@@ -7,7 +7,7 @@ spec:
   description: "Project for critical XDR apps"
   # Limit sources to your private repo (add more as needed)
   sourceRepos:
-    - git@github.com:YOUR-ORG/YOUR-PRIVATE-XDR-REPO.git
+    - git@github.com:cyber-armor/xdr.git
   # Allow deploying to any namespace on this cluster (tighten if desired)
   destinations:
     - namespace: "*"
