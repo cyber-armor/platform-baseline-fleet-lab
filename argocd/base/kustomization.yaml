@@ -1,4 +1,4 @@
 resources:
-  - argo-cd-certificate.yaml
-  - argo-cd-issuer.yaml
+  # - argo-cd-certificate.yaml
+  # - argo-cd-issuer.yaml
   - argo-cd-ui-ingress.yaml
