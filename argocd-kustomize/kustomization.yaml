@@ -1,0 +1,19 @@
+# platform-baseline/argocd-kustomize/kustomization.yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Upstream Argo CD install (pin a version tag!)
+resources:
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.11.6/manifests/install.yaml
+
+# Our extra resource(s)
+resources:
+  - ingress-argocd.yaml
+
+patches:
+  # Make the server Service ClusterIP
+  - path: patches/argocd-server-svc.yaml
+  # Enable --insecure via the cmd-params ConfigMap
+  - path: patches/argocd-cmd-params-cm.yaml
+  # Pre-set the admin password (bcrypt)
+  - path: patches/argocd-secret.yaml
