@@ -4,7 +4,7 @@
 # but do not specify a namespace.  In this example no resources
 # are configured with a namespace so this default will apply
 # namespace: argocd
-
+targetNamespace: argocd
 
 kustomize:
   # To use a kustomization.yaml different from the one in the root folder
