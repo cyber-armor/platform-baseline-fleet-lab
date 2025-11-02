@@ -1,4 +1,5 @@
 # namespace: traefik-system
+defaultNamespace: traefik
 
 helm:
   repo: https://helm.traefik.io/traefik
