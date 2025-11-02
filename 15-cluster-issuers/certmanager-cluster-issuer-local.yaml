@@ -29,6 +29,6 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: selfsigned-bootstrap-issuer # 👈 RENAMED for uniqueness
+  name: selfsigned-issuer # 👈 RENAMED for uniqueness
 spec:
   selfSigned: {}
