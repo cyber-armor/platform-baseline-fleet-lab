@@ -9,14 +9,14 @@
 # ## proxmox lab
 patches:
 # - path: overlays/proxmox/argo-cd-cm.yaml
-- path: overlays/proxmox/argocd-cmd-params-cm.yaml
-# - path: overlays/proxmox/argocd-server-service.yaml
-# - path: overlays/proxmox/patch-priority-class.yaml
-#   target:
-#     kind: Deployment
-# - path: overlays/proxmox/patch-priority-class.yaml
-#   target:
-#     kind: StatefulSet
+- path: argocd-cmd-params-cm.yaml
+- path: argocd-server-service.yaml
+- path: patch-priority-class.yaml
+  target:
+    kind: Deployment
+- path: overlays/proxmox/patch-priority-class.yaml
+  target:
+    kind: StatefulSet
 
 # ## proxmox lab
 # patches:
