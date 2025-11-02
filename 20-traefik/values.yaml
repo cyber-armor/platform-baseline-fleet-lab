@@ -93,3 +93,15 @@ ports:
     expose:
       default: true
     protocol: UDP
+
+api:
+  dashboard: true
+  ingressRoute:
+    dashboard:
+      enabled: true
+      entryPoints: ["websecure"]   # don't expose it on the internal 'traefik' entrypoint
+      # matchRule: Host(`traefik.example.com`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+      # middlewares:
+      #   - name: basic-auth   # define a Middleware for auth in your cluster first
+      # tls:                   # reference a cert-manager-issued secret if you want
+      #   secretName: traefik-dashboard-tls
