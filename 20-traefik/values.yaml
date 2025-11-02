@@ -1,24 +1,95 @@
-# Keep Traefik image tag empty so it follows the chart's appVersion (latest stable).
-image:
-  tag: null
+hostNetwork: true
 
-# Make Traefik the default IngressClass (set to false if you run multiple ingress controllers).
-ingressClass:
-  enabled: true
-  isDefaultClass: true
+hostPorts:
+- max: 65535
+  min: 0
 
-# Use a LoadBalancer (fits your Hetzner CCM setup). Switch to ClusterIP + externalIPs if you prefer.
+deployment:
+  kind: Deployment
+  replicas: 1
+  dnsPolicy: ClusterFirstWithHostNet
+  
+# allow binding to 80/443 on hostNetwork
+securityContext:
+  capabilities:
+    drop:
+      - ALL
+    add:
+      - NET_BIND_SERVICE
+#  allowPrivilegeEscalation: false
+  runAsGroup: 0
+  runAsNonRoot: false
+  runAsUser: 0
+
+# No Service; traffic goes straight to the node IP:80/443/… via hostNetwork
 service:
   enabled: true
-  # type: LoadBalancer
+  ## -- Single service is using `MixedProtocolLBService` feature gate.
+  ## -- When set to false, it will create two Service, one for TCP and one for UDP.
+  single: true
   type: ClusterIP
-
-# Enable both providers. PublishedService helps Traefik discover its external address.
+  
+additionalArguments:
+  - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
+# deployment:
+#   replicas: 1
 providers:
   kubernetesCRD:
     enabled: true
-  kubernetesIngress:
-    enabled: true
-    publishedService:
-      enabled: true   # important for external IP/hostname propagation
-      # pathOverride: ""  # (optional) <ns>/<svc> if you need to point elsewhere
+ports:
+  web:
+    expose:
+      default: true
+  websecure:
+    expose:
+      default: true
+
+      # Salt Mmster TCP/4505
+  tcp4505:
+    port: 4505
+    expose:
+      default: true
+    protocol: TCP
+
+
+  # Salt Master TCP/4506
+  tcp4506:
+    port: 4506
+    expose:
+      default: true
+    protocol: TCP
+
+  # Salt Master API TCP/4506
+  #tcp4506:
+  #  port: 8000
+  #  expose:
+  #    default: true
+  #  protocol: TCP
+
+  # Wazuh agent (logs) TCP/1514
+  tcp1514:
+    port: 1514
+    expose:
+      default: true
+    protocol: TCP
+
+  # Wazuh authd TCP/1515
+  tcp1515:
+    port: 1515
+    expose:
+      default: true
+    protocol: TCP
+
+  # Syslog TCP/55514
+  tcp55514:
+    port: 55514
+    expose:
+      default: true
+    protocol: TCP
+
+  # Syslog UDP/55514
+  udp55514:
+    port: 55514
+    expose:
+      default: true
+    protocol: UDP
