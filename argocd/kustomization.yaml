@@ -1,19 +1,19 @@
 bases:
   - overlays/proxmox
 
-# apiVersion: kustomize.config.k8s.io/v1beta1
-# kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
 
-# namespace: argocd
+namespace: argocd
 
-# resources:
+resources:
 # # - base/argo-cd-issuer.yaml
 # # - base/argo-cd-certificate.yaml
 # # - base/argo-cd-ui-ingress.yaml
 # # - base/rollouts-extension.yaml
 # # - base/sync-project.yaml
 # # - https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/ha/install.yaml
-# - https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml
 
 # # components:
 # # - https://github.com/argoproj-labs/argocd-extensions/manifests
