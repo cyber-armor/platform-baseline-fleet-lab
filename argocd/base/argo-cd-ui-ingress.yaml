@@ -5,14 +5,15 @@ metadata:
   annotations:
     ingress.kubernetes.io/proxy-body-size: 100M
     ingress.kubernetes.io/app-root: "/"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  ingressClassName: nginx
+  ingressClassName: traefik
   tls:
   - hosts:
-    - cd.apps.argoproj.io
+    - argocd.lab
     secretName: argocd-secret
   rules:
-  - host: cd.apps.argoproj.io
+  - host: argocd.lab
     http:
       paths:
       - path: /
