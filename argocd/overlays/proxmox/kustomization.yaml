@@ -1,7 +1,7 @@
 bases:
 - ../../base
 patchesStrategicMerge:
-- argo-cd-cm.yaml
+# - argo-cd-cm.yaml
 - argocd-cmd-params-cm.yaml
 - argocd-server-service.yaml
 - patch-priority-class.yaml
