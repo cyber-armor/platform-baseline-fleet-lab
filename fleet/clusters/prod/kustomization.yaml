@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   # - ../../apps/cert-manager
   # - ../../apps/argocd-manifest
-  - fleet/apps/apps/argocd
+  - fleet/apps/argocd
