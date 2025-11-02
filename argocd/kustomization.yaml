@@ -32,8 +32,8 @@ resources:
 
 ## proxmox lab
 patches:
-- path: argocd/overlays/proxmox/argo-cd-cm.yaml
-- path: argocd/overlays/proxmox/argocd-cmd-params-cm.yaml
+- path: overlays/proxmox/argo-cd-cm.yaml
+- path: overlays/proxmox/argocd-cmd-params-cm.yaml
 - path: overlays/proxmox/argocd-server-service.yaml
 - path: overlays/proxmox/patch-priority-class.yaml
   target:
