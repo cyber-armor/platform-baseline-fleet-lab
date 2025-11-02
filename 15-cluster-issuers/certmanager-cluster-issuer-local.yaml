@@ -1,0 +1,34 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: ca-internal-issuer # 👈 RENAMED: This is your final, usable CA Issuer.
+spec:
+  ca:
+    secretName: selfsigned-root-secret # 👈 References the secret created by (2)
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: selfsigned-ca
+  namespace: cert-manager # 💡 Must exist before this resource is applied
+spec:
+  isCA: true
+  commonName: selfsigned-root-ca
+  secretName: selfsigned-root-secret # 👈 The key secret
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: selfsigned-bootstrap-issuer # 👈 References the bootstrap issuer (1)
+    kind: ClusterIssuer
+    group: cert-manager.io
+
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned-bootstrap-issuer # 👈 RENAMED for uniqueness
+spec:
+  selfSigned: {}
