@@ -8,7 +8,7 @@ resources:
 helmCharts:
   - name: cert-manager
     repo: https://charts.jetstack.io
-    version: 1.16.1            # pick a current version for your env
+    version: 1.19.1            # pick a current version for your env
     releaseName: cert-manager
     namespace: cert-manager
     valuesInline:
