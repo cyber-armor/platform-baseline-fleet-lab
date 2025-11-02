@@ -23,7 +23,7 @@ securityContext:
 
 # No Service; traffic goes straight to the node IP:80/443/… via hostNetwork
 service:
-  enabled: false
+  enabled: true
   ## -- Single service is using `MixedProtocolLBService` feature gate.
   ## -- When set to false, it will create two Service, one for TCP and one for UDP.
   single: true
