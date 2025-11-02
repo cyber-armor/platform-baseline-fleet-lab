@@ -1,7 +1,7 @@
 # platform-baseline/argocd-kustomize/kustomization.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-defaultNamespace: argocd
+namespace: argocd
 
 # Upstream Argo CD install (pin a version tag!)
 resources:
