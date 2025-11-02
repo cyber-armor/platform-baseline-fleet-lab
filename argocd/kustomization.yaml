@@ -18,9 +18,9 @@ resources:
 # # components:
 # # - https://github.com/argoproj-labs/argocd-extensions/manifests
 
-patches:
+# patches:
 # # - path: overlays/production/argo-cd-cm.yaml
-- path: overlays/production/argocd-cmd-params-cm.yaml
+# - path: overlays/production/argocd-cmd-params-cm.yaml
 # # - path: overlays/production/argocd-notifications-cm.yaml
 # # - path: overlays/production/argocd-notifications-controller-deploy.yaml
 # # - path: overlays/production/argocd-rbac-cm.yaml
@@ -34,9 +34,9 @@ patches:
 # #     kind: StatefulSet
 
 # ## proxmox lab
-# patches:
+patches:
 # - path: overlays/proxmox/argo-cd-cm.yaml
-# - path: overlays/proxmox/argocd-cmd-params-cm.yaml
+- path: overlays/proxmox/argocd-cmd-params-cm.yaml
 # - path: overlays/proxmox/argocd-server-service.yaml
 # - path: overlays/proxmox/patch-priority-class.yaml
 #   target:
