@@ -6,8 +6,8 @@ resources:
   # - ns.yaml
   # Pull the latest stable Argo CD install manifest maintained by the project
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-  - ingress-tls.yaml
-  - ingressroute.yaml
+  - ingressroute/ingress-tls.yaml
+  - ingressroute/ingressroute.yaml
 
 patches:
   # Force argocd-server Service to ClusterIP (Traefik fronts it)
