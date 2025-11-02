@@ -1,48 +1,51 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+bases:
+  - overlays/proxmox
 
-namespace: argocd
+# apiVersion: kustomize.config.k8s.io/v1beta1
+# kind: Kustomization
 
-resources:
-# - base/argo-cd-issuer.yaml
-# - base/argo-cd-certificate.yaml
-# - base/argo-cd-ui-ingress.yaml
-# - base/rollouts-extension.yaml
-# - base/sync-project.yaml
-# - https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/ha/install.yaml
-- https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml
+# namespace: argocd
 
-# components:
-# - https://github.com/argoproj-labs/argocd-extensions/manifests
+# resources:
+# # - base/argo-cd-issuer.yaml
+# # - base/argo-cd-certificate.yaml
+# # - base/argo-cd-ui-ingress.yaml
+# # - base/rollouts-extension.yaml
+# # - base/sync-project.yaml
+# # - https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/ha/install.yaml
+# - https://raw.githubusercontent.com/argoproj/argo-cd/refs/heads/master/manifests/install.yaml
 
+# # components:
+# # - https://github.com/argoproj-labs/argocd-extensions/manifests
+
+# # patches:
+# # - path: overlays/production/argo-cd-cm.yaml
+# # - path: overlays/production/argocd-cmd-params-cm.yaml
+# # - path: overlays/production/argocd-notifications-cm.yaml
+# # - path: overlays/production/argocd-notifications-controller-deploy.yaml
+# # - path: overlays/production/argocd-rbac-cm.yaml
+# # - path: overlays/production/argocd-server-service.yaml
+# # - path: https://raw.githubusercontent.com/argoproj/argo-cd/master/notifications_catalog/install.yaml
+# # - path: overlays/production/patch-priority-class.yaml
+# #   target:
+# #     kind: Deployment
+# # - path: overlays/production/patch-priority-class.yaml
+# #   target:
+# #     kind: StatefulSet
+
+# ## proxmox lab
 # patches:
-# - path: overlays/production/argo-cd-cm.yaml
-# - path: overlays/production/argocd-cmd-params-cm.yaml
-# - path: overlays/production/argocd-notifications-cm.yaml
-# - path: overlays/production/argocd-notifications-controller-deploy.yaml
-# - path: overlays/production/argocd-rbac-cm.yaml
-# - path: overlays/production/argocd-server-service.yaml
-# - path: https://raw.githubusercontent.com/argoproj/argo-cd/master/notifications_catalog/install.yaml
-# - path: overlays/production/patch-priority-class.yaml
+# - path: overlays/proxmox/argo-cd-cm.yaml
+# - path: overlays/proxmox/argocd-cmd-params-cm.yaml
+# - path: overlays/proxmox/argocd-server-service.yaml
+# - path: overlays/proxmox/patch-priority-class.yaml
 #   target:
 #     kind: Deployment
-# - path: overlays/production/patch-priority-class.yaml
+# - path: overlays/proxmox/patch-priority-class.yaml
 #   target:
 #     kind: StatefulSet
 
-## proxmox lab
-patches:
-- path: overlays/proxmox/argo-cd-cm.yaml
-- path: overlays/proxmox/argocd-cmd-params-cm.yaml
-- path: overlays/proxmox/argocd-server-service.yaml
-- path: overlays/proxmox/patch-priority-class.yaml
-  target:
-    kind: Deployment
-- path: overlays/proxmox/patch-priority-class.yaml
-  target:
-    kind: StatefulSet
-
-# images:
-# - name: quay.io/argoproj/argocd
-#   newName: ghcr.io/argoproj/argo-cd/argocd
-#   newTag: 3.3.0-f26533ab
+# # images:
+# # - name: quay.io/argoproj/argocd
+# #   newName: ghcr.io/argoproj/argo-cd/argocd
+# #   newTag: 3.3.0-f26533ab
