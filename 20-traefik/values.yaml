@@ -94,6 +94,20 @@ ports:
       default: true
     protocol: UDP
 
+  # Rustdesk ID Server
+  rustdesk-id:
+    port: 21116
+    expose:
+      default: true
+    protocol: UDP
+
+  # Rustdesk Relay Server
+  udp55514:
+    port: 21117
+    expose:
+      default: true
+    protocol: UDP
+
 api:
   dashboard: true
   ingressRoute:
