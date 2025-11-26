@@ -26,11 +26,12 @@ service:
   enabled: true
   ## -- Single service is using `MixedProtocolLBService` feature gate.
   ## -- When set to false, it will create two Service, one for TCP and one for UDP.
-  single: true
-  type: ClusterIP
+  # single: true
+  # type: ClusterIP
+  type: LoadBalancer
   
-additionalArguments:
-  - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
+# additionalArguments:
+#   - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
 # deployment:
 #   replicas: 1
 providers:
@@ -94,19 +95,41 @@ ports:
       default: true
     protocol: UDP
 
-  # Rustdesk ID Server
-  rustdesk-id:
+  # # Rustdesk ID Server
+  # rustdesk-id:
+  #   port: 21116
+  #   expose:
+  #     default: true
+  #   protocol: UDP
+
+  # # Rustdesk Relay Server
+  # rustdesk-relay:
+  #   port: 21117
+  #   expose:
+  #     default: true
+  #   protocol: UDP
+
+  # Rustdesk ID Server UDP
+  udp21116:
     port: 21116
     expose:
       default: true
     protocol: UDP
 
-  # Rustdesk Relay Server
+  # Rustdesk ID Server TCP
+  tcp21116:
+    port: 21116
+    expose:
+      default: true
+    protocol: TCP
+
+
+  # Rustdesk Relay Server TCP
   rustdesk-relay:
     port: 21117
     expose:
       default: true
-    protocol: UDP
+    protocol: TCP
 
 api:
   dashboard: true
